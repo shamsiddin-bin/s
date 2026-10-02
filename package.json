@@ -1,0 +1,47 @@
+{
+  "name": "shamsiddin-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node scripts/start.mjs",
+    "setup": "node scripts/setup.mjs",
+    "dev": "node scripts/dev.mjs",
+    "build": "vite build && esbuild server/index.ts --bundle --platform=node --packages=external --format=esm --outfile=dist/server.mjs",
+    "test": "esbuild tests/integration.ts --bundle --platform=node --packages=external --format=esm --outfile=.test/integration.mjs && node .test/integration.mjs",
+    "typecheck": "tsc --noEmit",
+    "test:smoke": "node tests/smoke.mjs"
+  },
+  "dependencies": {
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "dotenv": "16.6.1",
+    "express": "5.1.0",
+    "helmet": "8.1.0",
+    "lucide-react": "^1.31.0",
+    "radix-ui": "^1.6.7",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "sharp": "0.34.5",
+    "tailwind-merge": "3.6.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/express": "5.0.3",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "drizzle-kit": "0.31.10",
+    "drizzle-orm": "0.45.2",
+    "esbuild": "0.28.0",
+    "tailwindcss": "4.2.1",
+    "tw-animate-css": "^1.4.0",
+    "typescript": "5.9.3",
+    "vite": "8.0.13"
+  }
+}

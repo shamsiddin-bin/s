@@ -1,0 +1,17 @@
+Tekshiruv natijalari
+
+PASS: TypeScript tekshiruvi
+PASS: Production frontend/backend build
+PASS: Login va uchinchi xatodan keyin bir soatlik blok
+PASS: Blokni nazoratli vaqt bilan tugashini tekshirish
+PASS: Mustaqil kirish manbalari va parallel urinishlar
+PASS: CSRF va ruxsatsiz API so‘rovlarini rad etish
+PASS: Profil, loyihalar, xizmatlar va buyurtmalar
+PASS: Haqiqiy HTTP server orqali rasm decode/yuklash
+PASS: SQLite va rasm fayllari restartdan keyin saqlanishi
+PASS: Logout va parol almashganda sessiyalar yopilishi
+PASS: Soxta identity/IP header bilan blokni chetlab o‘tish rad etildi
+
+Render akkauntiga deploy qilinmagan; render.yaml va yo‘riqnoma kiritilgan.
+Windows .bat fayli Linux muhitida bajarilmagan.
+Mobil brauzerda vizual tekshiruv bajarilmagan.

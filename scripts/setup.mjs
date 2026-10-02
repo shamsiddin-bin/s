@@ -1,0 +1,6 @@
+import {createInterface} from 'node:readline/promises';
+import {stdin,stdout} from 'node:process';
+import {existsSync,writeFileSync,readFileSync} from 'node:fs';
+import {scryptSync,randomBytes} from 'node:crypto';
+export async function setup(){if(existsSync('.env')&&/INITIAL_ADMIN_HASH=.+/.test(readFileSync('.env','utf8'))){console.log('.env allaqachon sozlangan. Parolni admin panelda o‘zgartiring.');return}const rl=createInterface({input:stdin,output:stdout});let password='';try{while(password.length<12){password=await rl.question('Yangi admin parolini yozing (kamida 12 belgi): ');if(password.length<12)console.log('Parol juda qisqa.')}const confirm=await rl.question('Parolni yana bir marta yozing: ');if(password!==confirm)throw Error('Parollar bir xil emas. npm run setup ni qayta bajaring.')}finally{rl.close()}const salt=randomBytes(16).toString('hex');const hash=`scrypt$${salt}$${scryptSync(password,salt,64,{N:16384,r:8,p:1}).toString('hex')}`;const existing=existsSync('.env')?readFileSync('.env','utf8').replace(/^INITIAL_ADMIN_HASH=.*\r?\n?/gm,''):'';writeFileSync('.env',existing+`\nINITIAL_ADMIN_HASH='${hash}'\n`,{mode:0o600});console.log('Tayyor. Endi npm start ni bajaring. Parolingizni eslab qoling.');}
+if(process.argv[1]?.endsWith('setup.mjs'))setup().catch(e=>{console.error(e.message);process.exit(1)});

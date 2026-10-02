@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: shamsiddin-portfolio
+    runtime: node
+    plan: starter
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    disk:
+      name: portfolio-data
+      mountPath: /var/data/portfolio
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /var/data/portfolio
+      - key: TRUST_PROXY_HOPS
+        value: "1"
+      - key: ADMIN_PASSWORD
+        sync: false
